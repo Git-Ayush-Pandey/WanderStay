@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplate") %>
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h3>Edit Listings</h3>
+    <form
+      action="/listings/<%= listing._id %>?_method=PUT"
+      method="POST"
+      enctype="multipart/form-data"
+    >
+      <div class="mb-3">
+        <label for="title" class="form-label">Title</label>
+        <input
+          required
+          type="text"
+          name="listing[title]"
+          value="<%= listing.title %>"
+          class="form-control"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea required name="listing[description]" class="form-control">
+<%= listing.description %></textarea
+        >
+      </div>
+      <div class="mb-3" style="height: 300; width: 250">
+        Original Listing Image <br />
+        <img
+          src="<%= listing.image.url%>"
+          class="editImage"
+          alt="current image"
+        />
+      </div>
+      <div class="mb-3">
+        <label for="image" class="form-label">Upload new Image</label>
+        <input type="file" name="listing[image]" class="form-control" />
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price</label>
+          <input
+            required
+            type="number"
+            name="listing[price]"
+            class="form-control"
+            value="<%= listing.price %>"
+          />
+        </div>
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country</label>
+          <input
+            required
+            type="text"
+            name="listing[country]"
+            class="form-control"
+            value="<%= listing.country %>"
+          />
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location</label>
+        <input
+          required
+          type="text"
+          name="listing[location]"
+          class="form-control"
+          value="<%= listing.location %>"
+        />
+      </div>
+
+      <button class="btn btn-dark edit-btn mt-3" type="submit">Edit</button>
+    </form>
+  </div>
+</div>
